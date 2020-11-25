@@ -1,8 +1,7 @@
 package com.thoughtworks.collection;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Reduce {
 
@@ -13,14 +12,15 @@ public class Reduce {
     }
 
     public double getAverage() {
-        throw new NotImplementedException();
+        double total =  arrayList.stream().reduce(0, (sum,element) -> sum+element);
+        return total / arrayList.size();
     }
 
     public int getMaxValue() {
-        throw new NotImplementedException();
+        return arrayList.stream().reduce(0,Integer::max);
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+    	return arrayList.stream().filter(num -> num % 2 ==1).reduce(0,(first, second) -> second) ;
     }
 }
